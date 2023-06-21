@@ -17,4 +17,5 @@ public interface BahanHarga {
     public abstract int getHargaBahan();
     public abstract int[] getAllBeratKemasan();
     public abstract int[] getAllHargaBahan();
+    public abstract String[] getAllNamaKemasan();
 }

@@ -10,12 +10,16 @@ import java.util.ArrayList;
  *
  * @author user
  */
-public class Adonan implements BahanHarga{
+public final class Adonan implements BahanHarga{
     int[] bahan = new int[2];
-    int[] allBeratKemasan = new int[this.getJumlahBahan()];
     
     ArrayList<Object> bahanAdonan = new ArrayList<>();
-    public void setBahanAdonan(){
+
+    public Adonan() {
+        setBahanAdonan();
+    }
+
+    private void setBahanAdonan() {
         bahanAdonan.add(new Object[]{"Tepung Terigu", 1000, 40000});
         bahanAdonan.add(new Object[]{"Gula Pasir", 1000, 25000});
         bahanAdonan.add(new Object[]{"Butter", 500, 23000});
@@ -26,22 +30,17 @@ public class Adonan implements BahanHarga{
         bahanAdonan.add(new Object[]{"Es Batu", 1000, 2000});
         System.out.println("Berhasil menambahkan bahan-bahan adonan");
     }
-    
-    public ArrayList<Object> getBahanAdonan(){
-        this.setBahanAdonan();
-        return this.bahanAdonan;
-    }
 
     @Override
     public int getJumlahBahan() {
-        this.setBahanAdonan();
-        return this.bahanAdonan.size();
+        return bahanAdonan.size();
     }
 
     @Override
     public void getBeratHargaKemasan(String namaBahan) {
-        for (int i = 0; i < this.getBahanAdonan().size(); i++) {
-            Object[] objArray = (Object[]) this.getBahanAdonan().get(i);
+        int[] bahan = new int[2];
+        for (int i = 0; i < bahanAdonan.size(); i++) {
+            Object[] objArray = (Object[]) bahanAdonan.get(i);
             String nama = (String) objArray[0];
             if (nama.equals(namaBahan)) {
                 bahan[0] = (int) objArray[1];
@@ -49,26 +48,49 @@ public class Adonan implements BahanHarga{
                 break;
             }
         }
+        this.bahan = bahan;
     }
-    
+
     @Override
-    public int getBeratKemasan(){
+    public int getBeratKemasan() {
         return bahan[0];
-    };
-    
+    }
+
     @Override
     public int getHargaBahan() {
         return bahan[1];
     }
 
-
     @Override
     public int[] getAllHargaBahan() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        int[] allHargaKemasan = new int[getJumlahBahan()];
+        for (int i = 0; i < bahanAdonan.size(); i++) {
+            Object[] objArray = (Object[]) bahanAdonan.get(i);
+            int harga = (int) objArray[2];
+            allHargaKemasan[i] = harga;
         }
+        return allHargaKemasan;
+    }
 
     @Override
     public int[] getAllBeratKemasan() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        int[] allBeratKemasan = new int[getJumlahBahan()];
+        for (int i = 0; i < bahanAdonan.size(); i++) {
+            Object[] objArray = (Object[]) bahanAdonan.get(i);
+            int berat = (int) objArray[1];
+            allBeratKemasan[i] = berat;
+        }
+        return allBeratKemasan;
+    }
+
+    @Override
+    public String[] getAllNamaKemasan() {
+        String[] allNamaKemasan = new String[getJumlahBahan()];
+        for (int i = 0; i < bahanAdonan.size(); i++) {
+            Object[] objArray = (Object[]) bahanAdonan.get(i);
+            String nama = (String) objArray[0];
+            allNamaKemasan[i] = nama;
+        }
+        return allNamaKemasan;
     }
 }

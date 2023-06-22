@@ -13,6 +13,10 @@ public class Pizza extends MacamRoti{
     private int beratKomposisi = 1950;
     private int beratSatuPcs = 190;
     
+    public void setKomposisi(){
+        this.setTotalKomposisi(this.komposisiPizza);
+    }
+    
     public int jumlahPcsPerKomposisi(){
         return this.beratKomposisi/this.beratSatuPcs;
     }

@@ -12,8 +12,31 @@ import java.util.Arrays;
 public class MacamRoti {
     Adonan adonan = new Adonan();
     ToppingFilling topFill = new ToppingFilling();
+    int[] totalKomposisi = new int[adonan.getJumlahBahan()];
      
     ArrayList<String[][]> toppingFilling = new ArrayList<>();
+    
+    ArrayList<int[]> orderan = new ArrayList<>();
+    
+    public void setOrderanCustomer(int[] orderanCustomer){
+        orderan.add(orderanCustomer);
+    }
+    
+    public void setTotalKomposisi(int[] data){
+        for (int i = 0; i<data.length ; i ++){
+            this.totalKomposisi[i] = this.totalKomposisi[i] + data[i];
+        }
+    }
+    
+    public void getTotalKomposisi(){
+        for(int i = 0; i < this.totalKomposisi.length; i ++){
+            System.out.println(this.totalKomposisi[i]);
+        }
+    }
+    
+    public ArrayList<int[]> getOrderanCustomer(){
+        return orderan;
+    }
     
     public int[] hitungHargaPerKomposisiAdonan(int[] komposisi){
         int[] berat = adonan.getAllBeratKemasan();

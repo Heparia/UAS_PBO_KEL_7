@@ -9,17 +9,17 @@ package bakerypakray;
  * @author user
  */
 public class VarianSatuRotiManis extends RotiManis implements Varian{
-    private String[][] filling = {{"Keju", "5"}, {"Coklat", "5"}};
-    private String[][] topping = {{"Coklat", "5"}};
+    protected String[][] filling = {{"Keju", "5"}, {"Coklat", "5"}};
+    protected String[][] topping = {{"Coklat", "5"}};
 
     @Override
-    public int getHargaTopFill() {
-        int[] hargaTopping = this.hitungHargaPerKomposisiTopFill(topping);
-        int[] hargaFilling = this.hitungHargaPerKomposisiTopFill(filling);
-        int[] hasil = new int[hargaTopping.length + hargaFilling.length];
+    public double getHargaTopFill() {
+        double[] hargaTopping = super.setHargaPerKomposisiTopFill(topping);
+        double[] hargaFilling = super.setHargaPerKomposisiTopFill(filling);
+        double[] hasil = new double[hargaTopping.length + hargaFilling.length];
         System.arraycopy(hargaTopping, 0, hasil, 0, hargaTopping.length);
         System.arraycopy(hargaFilling, 0, hasil, hargaTopping.length, hargaFilling.length);
-        int harga = 0;
+        double harga = 0;
         for(int i = 0; i < hasil.length; i ++){
             harga = harga + hasil[i];
         }
@@ -28,6 +28,26 @@ public class VarianSatuRotiManis extends RotiManis implements Varian{
 
     @Override
     public void displayCheckVarian() {
-        System.out.println(this.getHargaTopFill());
+        System.out.println("Varian 1 Roti Manis seharga Rp "+this.getHargaJualVarian());
     }
+
+    @Override
+    public double getModalVarian() {
+        return this.getJumlahModalAdonanPerPcs() + this.getHargaTopFill();
+    }
+
+    @Override
+    public int getHargaJualVarian() {
+        int hasil = (int) (((100+this.profit)*this.getModalVarian())/100);
+        return hasil;
+    }
+
+    @Override
+    public String[][] getGabunganTopFill() {
+        String[][] hasil = new String[topping.length + filling.length][2];
+        System.arraycopy(topping, 0, hasil, 0, topping.length);
+        System.arraycopy(filling, 0, hasil, topping.length, filling.length);
+        return hasil;
+    }
+    
 }

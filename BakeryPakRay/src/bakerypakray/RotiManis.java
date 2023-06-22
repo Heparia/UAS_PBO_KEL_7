@@ -29,17 +29,22 @@ public class RotiManis extends MacamRoti{
     }
 
     @Override
-    int[] getHargaPerKomposisi() {
-        return this.setHargaPerKomposisiAdonan(this.komposisiRotiManis);
+    double[] getHargaPerKomposisi() {
+        return super.setHargaPerKomposisiAdonan(this.komposisiRotiManis);
     }
 
     @Override
-    int getJumlahModalAdonanPerPcs() {
-        int[] data = this.getHargaPerKomposisi();
-        int hasil = 0;
+    double getJumlahModalAdonanPerPcs() {
+        double[] data = this.getHargaPerKomposisi();
+        double hasil = 0;
         for(int i = 0; i < data.length; i ++){
             hasil = hasil + data[i];
         }
         return hasil/this.hitungJumlahPcs();
+    }
+
+    @Override
+    int[] getKomposisi() {
+        return this.komposisiRotiManis;
     }
 }

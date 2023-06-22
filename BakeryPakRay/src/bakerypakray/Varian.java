@@ -9,6 +9,9 @@ package bakerypakray;
  * @author user
  */
 interface Varian {
-    public abstract int getHargaTopFill();
+    public abstract double getHargaTopFill();
     public abstract void displayCheckVarian();
+    public abstract double getModalVarian();
+    public abstract int getHargaJualVarian();
+    public abstract String[][] getGabunganTopFill();
 }

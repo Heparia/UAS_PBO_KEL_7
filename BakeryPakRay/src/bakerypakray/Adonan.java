@@ -28,7 +28,6 @@ public final class Adonan implements BahanHarga{
         bahanAdonan.add(new Object[]{"Susu Cair", 1000, 24000});
         bahanAdonan.add(new Object[]{"Telur", 1000, 23000});
         bahanAdonan.add(new Object[]{"Es Batu", 1000, 2000});
-        System.out.println("Berhasil menambahkan bahan-bahan adonan");
     }
 
     @Override

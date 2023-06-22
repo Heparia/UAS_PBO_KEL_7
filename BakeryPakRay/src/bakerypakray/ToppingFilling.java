@@ -26,7 +26,6 @@ public final class ToppingFilling implements BahanHarga{
         bahanToppingFilling.add(new Object[]{"Sosis", 1000, 80000});
         bahanToppingFilling.add(new Object[]{"Smocked Beef", 1000, 90000});
         bahanToppingFilling.add(new Object[]{"Bawang Bombay", 500, 40000});
-        System.out.println("Berhasil menambahkan bahan topping dan filling");
     }
 
     @Override

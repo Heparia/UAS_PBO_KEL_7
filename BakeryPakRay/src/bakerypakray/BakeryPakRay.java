@@ -14,8 +14,10 @@ public class BakeryPakRay {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        RotiManis a = new RotiManis();
-        a.displayCheck();
+        String[][] orderan = {{"Roti Manis", "1", "50"}, {"Roti Manis", "2", "100"}, {"Roti Manis", "3", "70"}, {"Roti Tawar", "1"," 20"}, {"Roti Tawar", "2", "15"}, {"Pizza", "1", "10"}};
+        
+        PerhitunganBahan a = new PerhitunganBahan();
+        a.bahanTopFill();
         
         VarianSatuRotiManis b = new VarianSatuRotiManis();
         b.displayCheckVarian();

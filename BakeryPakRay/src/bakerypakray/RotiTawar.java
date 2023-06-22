@@ -10,8 +10,7 @@ package bakerypakray;
  */
 public class RotiTawar extends MacamRoti{
     private int[] komposisiRotiTawar = {1000,125, 100, 20, 250, 200, 70, 300};
-    
-    public void setKomposisi(){
-        this.setTotalKomposisi(this.komposisiRotiTawar);
-    }
+    private int beratKomposisi = 2065;
+    private int beratSatuPcs = 400;
+
 }

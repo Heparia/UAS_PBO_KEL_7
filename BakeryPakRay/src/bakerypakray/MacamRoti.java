@@ -3,42 +3,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package bakerypakray;
-import java.util.ArrayList;
-import java.util.Arrays;
 /**
  *
  * @author user
  */
-public class MacamRoti {
+public abstract class MacamRoti {
     Adonan adonan = new Adonan();
     ToppingFilling topFill = new ToppingFilling();
-    int[] totalKomposisi = new int[adonan.getJumlahBahan()];
-     
-    ArrayList<String[][]> toppingFilling = new ArrayList<>();
     
-    ArrayList<int[]> orderan = new ArrayList<>();
+    abstract int hitungJumlahPcs();
+    abstract int sisaBahan();
+    abstract void displayCheck();
+    abstract int[] getHargaPerKomposisi();
+    abstract int getJumlahModalAdonanPerPcs();
     
-    public void setOrderanCustomer(int[] orderanCustomer){
-        orderan.add(orderanCustomer);
-    }
-    
-    public void setTotalKomposisi(int[] data){
-        for (int i = 0; i<data.length ; i ++){
-            this.totalKomposisi[i] = this.totalKomposisi[i] + data[i];
-        }
-    }
-    
-    public void getTotalKomposisi(){
-        for(int i = 0; i < this.totalKomposisi.length; i ++){
-            System.out.println(this.totalKomposisi[i]);
-        }
-    }
-    
-    public ArrayList<int[]> getOrderanCustomer(){
-        return orderan;
-    }
-    
-    public int[] hitungHargaPerKomposisiAdonan(int[] komposisi){
+    public int[] setHargaPerKomposisiAdonan(int[] komposisi){
         int[] berat = adonan.getAllBeratKemasan();
         int[] harga = adonan.getAllHargaBahan();
         int[] hargaKomposisi = new int[komposisi.length];
@@ -48,36 +27,19 @@ public class MacamRoti {
         return hargaKomposisi;
     }
     
-    public int[] hitungHargaPerKomposisiTopFill(int[] komposisi){
+    public int[] hitungHargaPerKomposisiTopFill(String[][] data){
+        String[] nama = topFill.getAllNamaKemasan();
         int[] berat = topFill.getAllBeratKemasan();
         int[] harga = topFill.getAllHargaBahan();
-        int[] hargaKomposisi = new int[komposisi.length];
-        for(int i = 0; i < komposisi.length; i ++){
-            hargaKomposisi[i] = (komposisi[i] * harga[i])/berat[i];
-        }
-        return hargaKomposisi;
-    }
-    
-    public int totalHargaVarian(int[] adonan, int[] topFil){
-        int hasil = 0;
-        for(int i = 0; i < adonan.length; i ++){
-            hasil = hasil + adonan[i];
-        }
-        for(int i = 0; i < topFil.length; i ++){
-            hasil = hasil + topFil[i];
-        }
-        return hasil;
-    }
-    
-    public void setToppingFilling(String[][] topFil){
-        toppingFilling.add(topFil);
-    }
-    
-    public void displayToppingFilling(){
-        for (String[][] topFil : toppingFilling) {
-            for (String[] row : topFil) {
-                System.out.println(Arrays.toString(row));
+        int[] hargaKomposisi = new int[data.length];
+        for(int i = 0; i < data.length; i ++){
+            for (String nama1 : nama) {
+                if (data[i][0] == null ? nama1 == null : data[i][0].equals(nama1)) {
+                    int angka = Integer.parseInt(data[i][1]);
+                    hargaKomposisi[i] = (angka * harga[i])/berat[i];
+                }
             }
         }
+        return hargaKomposisi;
     }
 }

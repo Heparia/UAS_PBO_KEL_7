@@ -15,6 +15,20 @@ public class MacamRoti {
      
     ArrayList<String[][]> toppingFilling = new ArrayList<>();
     
+    ArrayList<int[]> orderan = new ArrayList<>();
+    
+    public void setOrderanCustomer(int[] orderanCustomer){
+        orderan.add(orderanCustomer);
+    }
+    
+    public void getOrderanCustomer(){
+        for(int[] i : orderan){
+            for(int j = 0; j < orderan.size(); j ++){
+                
+            }
+        }
+    }
+    
     public int[] hitungHargaPerKomposisiAdonan(int[] komposisi){
         int[] berat = adonan.getAllBeratKemasan();
         int[] harga = adonan.getAllHargaBahan();

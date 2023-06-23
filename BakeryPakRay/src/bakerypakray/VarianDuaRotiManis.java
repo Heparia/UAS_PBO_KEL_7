@@ -44,12 +44,12 @@ public class VarianDuaRotiManis extends RotiManis implements Varian {
 
     @Override
     public String[][] getTopping() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.topping;
     }
 
     @Override
     public String[][] getFilling() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.filling;
     }
     
 }

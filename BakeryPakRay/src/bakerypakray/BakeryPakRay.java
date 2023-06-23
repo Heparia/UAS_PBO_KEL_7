@@ -14,13 +14,13 @@ public class BakeryPakRay {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-//        String[][] orderan = {{"Roti Manis", "1", "50"}, {"Roti Manis", "2", "100"}, {"Roti Manis", "3", "70"}, {"Roti Tawar", "1","20"}, {"Roti Tawar", "2", "15"}, {"Pizza", "1", "10"}};
-//        
-//        for(String[] o : orderan){
-//            PerhitunganBahan start = new PerhitunganBahan(o);
-//            start.setData();
-//            start.displayCheck();
-//        }
+        String[][] orderan = {{"Roti Manis", "1", "50"}, {"Roti Manis", "2", "100"}, {"Roti Manis", "3", "70"}, {"Roti Tawar", "1","20"}, {"Roti Tawar", "2", "15"}, {"Pizza", "1", "10"}};
+        
+        for(String[] o : orderan){
+            PerhitunganBahan start = new PerhitunganBahan(o);
+            start.setData();
+            start.displayCheck();
+        }
         
         VarianSatuRotiManis b = new VarianSatuRotiManis();
         b.displayCheckVarian();

@@ -19,6 +19,23 @@ public class BakeryPakRay {
         for(String[] o : orderan){
             PerhitunganBahan start = new PerhitunganBahan(o);
         }
+            
+        
+        VarianSatuRotiManis b = new VarianSatuRotiManis();
+        b.displayCheckVarian();
+        
+        VarianDuaRotiManis c = new VarianDuaRotiManis();
+        c.displayCheckVarian();
+        
+        VarianTigaRotiManis d = new VarianTigaRotiManis();
+        d.displayCheckVarian();
+        
+        VarianSatuRotiTawar e = new VarianSatuRotiTawar();
+        e.displayCheckVarian();
+        
+        VarianDuaRotiTawar f = new VarianDuaRotiTawar();
+        f.displayCheckVarian();
+            
     }
     
 }

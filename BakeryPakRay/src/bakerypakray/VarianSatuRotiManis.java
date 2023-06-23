@@ -43,11 +43,13 @@ public class VarianSatuRotiManis extends RotiManis implements Varian{
     }
 
     @Override
-    public String[][] getGabunganTopFill() {
-        String[][] hasil = new String[topping.length + filling.length][2];
-        System.arraycopy(topping, 0, hasil, 0, topping.length);
-        System.arraycopy(filling, 0, hasil, topping.length, filling.length);
-        return hasil;
+    public String[][] getTopping() {
+        return this.topping;
+    }
+
+    @Override
+    public String[][] getFilling() {
+        return this.filling;
     }
     
 }

@@ -13,5 +13,6 @@ interface Varian {
     public abstract void displayCheckVarian();
     public abstract double getModalVarian();
     public abstract int getHargaJualVarian();
-    public abstract String[][] getGabunganTopFill();
+    public abstract String[][] getTopping();
+    public abstract String[][] getFilling();
 }

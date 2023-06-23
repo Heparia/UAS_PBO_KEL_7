@@ -14,11 +14,13 @@ public class PerhitunganBahan {
     int jumlah = 0;
     
     VarianSatuRotiManis v1RM = new VarianSatuRotiManis();
-//    VarianDuaRotiManis v2RM = new VarianDuaRotiManis();
-//    VarianTigaRotiManis v3RM = new VarianTigaRotiManis();
-//    VarianSatuRotiTawar v1RT = new VarianSatuRotiTawar();
-//    VarianDuaRotiTawar v2RT = new VarianDuaRotiTawar();
-//    VarianSatuPizza v1P = new VarianSatuPizza();
+    VarianDuaRotiManis v2RM = new VarianDuaRotiManis();
+    VarianTigaRotiManis v3RM = new VarianTigaRotiManis();
+    VarianSatuRotiTawar v1RT = new VarianSatuRotiTawar();
+    VarianDuaRotiTawar v2RT = new VarianDuaRotiTawar();
+    VarianSatuPizza v1P = new VarianSatuPizza();
+    
+    String[][][] dataBahan = new String[v1RM.adonan.getJumlahBahan() + v1RM.topFill.getJumlahBahan()][][];
     
     public PerhitunganBahan(String[] orderan){
         this.nama = orderan[0];
@@ -27,50 +29,63 @@ public class PerhitunganBahan {
     }
     
     public void displayCheck(){
-        System.out.println("Perhitungan Bahan");
+        for(int i = 0; i < this.dataBahan[0].length; i ++){
+            System.out.println("Nama: "+this.dataBahan[0][i][0]);
+            System.out.println("Berat: "+this.dataBahan[0][i][1]);
+        }
+        for(int i = 0; i < this.dataBahan[1].length; i ++){
+            System.out.println("Nama: "+this.dataBahan[1][i][0]);
+            System.out.println("Berat: "+this.dataBahan[1][i][1]);
+        }
     }
-    public String[][][] getToppingFilling(String nama, int varian){
-        String[][][] data = new String[0][0][0];
+    
+    public String[][][] getDataBahan(){
+        String[][][] data = new String[v1RM.adonan.getJumlahBahan() + v1RM.topFill.getJumlahBahan()][][];
+
         String[][] toppings = null;
         String[][] fillings = null;
+
         switch (nama) {
             case "Roti Manis":
+                data[3] = this.getKomposisiRotiManis();
                 switch (varian) {
                     case 1:
                         toppings = v1RM.getTopping();
                         fillings = v1RM.getFilling();
                         break;
-//                    case 2:
-//                        toppings = v2RM.getTopping();
-//                        fillings = v2RM.getFilling();
-//                        break;
-//                    case 3:
-//                        toppings = v3RM.getTopping();
-//                        fillings = v3RM.getFilling();
-//                        break;
+                    case 2:
+                        toppings = v2RM.getTopping();
+                        fillings = v2RM.getFilling();
+                        break;
+                    case 3:
+                        toppings = v3RM.getTopping();
+                        fillings = v3RM.getFilling();
+                        break;
                     default:
                         fillings = new String[0][0];
                         toppings = new String[0][0];
                         break;
                 }
                 break;
-//            case "Roti Tawar":
-//                switch (varian) {
-//                    case 1:
-//                        toppings = v1RT.getTopping();
-//                        fillings = v1RT.getFilling();
-//                        break;
-//                    case 2:
-//                        toppings = v2RT.getTopping();
-//                        fillings = v2RT.getFilling();
-//                        break;
-//                    default:
-//                        fillings = new String[0][0];
-//                        toppings = new String[0][0];
-//                        break;
-//                }
-//                break;
+            case "Roti Tawar":
+                data[3] = this.getKomposisiRotiTawar();
+                switch (varian) {
+                    case 1:
+                        toppings = v1RT.getTopping();
+                        fillings = v1RT.getFilling();
+                        break;
+                    case 2:
+                        toppings = v2RT.getTopping();
+                        fillings = v2RT.getFilling();
+                        break;
+                    default:
+                        fillings = new String[0][0];
+                        toppings = new String[0][0];
+                        break;
+                }
+                break;
 //            case "Pizza":
+//                data[3] = this.getKomposisiPizza();
 //                switch (varian) {
 //                    case 1:
 //                        toppings = v1P.getTopping();
@@ -83,21 +98,24 @@ public class PerhitunganBahan {
 //                }
 //                break;
             default:
+                data[3] = new String[0][0];
                 fillings = new String[0][0];
                 toppings = new String[0][0];
                 break;
         }
+
         data[0] = fillings;
         data[1] = toppings;
+
         return data;
     }
     
     public String[][] getFilling(){
-        return this.getToppingFilling(this.nama, this.varian)[0];
+        return this.getDataBahan()[0];
     }
     
     public String[][] getTopping(){
-        return this.getToppingFilling(this.nama, this.varian)[1];
+        return this.getDataBahan()[1];
     }
 
     public String[][] bahanTopFill(){
@@ -112,15 +130,80 @@ public class PerhitunganBahan {
         return topFill;
     }
     
-    public int[] getKomposisiRotiManis(){
-        return v1RM.getKomposisi();
+    public String[][] getKomposisiRotiManis(){
+        int[] komposisi = v1RM.getKomposisi();
+        String[] nama = v1RM.adonan.getAllNamaKemasan();
+        String[][] data = new String[v1RM.adonan.getJumlahBahan()][2];
+        for (int i = 0; i < komposisi.length; i++) {
+            data[i][0] = nama[i];
+            data[i][1] = String.valueOf(komposisi[i]);
+        }
+        return data;
     }
     
-//    public int[] getKomposisiRotiTawar(){
-//        return v1RT.getKomposisi();
-//    }
+    public String[][] getKomposisiRotiTawar(){
+        int[] komposisi = v1RT.getKomposisi();
+        String[] nama = v1RT.adonan.getAllNamaKemasan();
+        String[][] data = new String[v1RT.adonan.getJumlahBahan()][2];
+        for (int i = 0; i < komposisi.length; i++) {
+            data[i][0] = nama[i];
+            data[i][1] = String.valueOf(komposisi[i]);
+        }
+        return data;
+    }
 //    
-//    public int[] getKomposisiPizza(){
-//        return v1P.getKomposisi();
+//    public String[][] getKomposisiPizza(){
+//        int[] komposisi = v1P.getKomposisi();
+//        String[] nama = v1P.adonan.getAllNamaKemasan();
+//        String[][] data = new String[v1P.adonan.getJumlahBahan()][2];
+//        for (int i = 0; i < komposisi.length; i++) {
+//            data[i][0] = nama[i];
+//            data[i][1] = String.valueOf(komposisi[i]);
+//        }
+//        return data;
 //    }
+    
+    public void setData(){
+        this.dataBahan[0] = this.getDataBahan()[3];
+        this.dataBahan[1] = this.bahanTopFill();
+        
+        if (dataBahan != null) {
+            for (String[][] a : dataBahan) {
+                if (a == null) {
+                    continue;
+                }
+                for (String[] b : a) {
+                    if (b == null) {
+                        continue;
+                    }
+                    for (String value : b) {
+                        if (value != null) {
+                            System.out.println(value);
+                        }
+                    }
+                }
+            }
+        }
+
+        for (int i = 0; i < this.dataBahan.length; i++) {
+            for (int j = 0; j < this.dataBahan[i].length; j++) {
+                String[] b = this.dataBahan[i][j];
+                if (b != null) {
+                    System.out.println(b[0]);
+                } else {
+//                    this.dataBahan[i][j][0] = "0";
+//                    this.dataBahan[i][j][1] = "0";
+                    System.out.println("gagal");
+                }
+            }
+        }
+
+//        for(int i = 0; i < this.dataBahan.length; i++){
+//            System.out.println(this.dataBahan[0][i][0]);
+////            this.dataBahan[0][i][0] = this.getDataBahan()[3][i][0];
+////            this.dataBahan[0][i][1] = Integer.toString(Integer.parseInt(this.dataBahan[0][i][1]) + Integer.parseInt(this.getDataBahan()[3][i][1]));
+////            this.dataBahan[1][i][0] = this.bahanTopFill()[i][0];
+////            this.dataBahan[1][i][1] = Integer.toString(Integer.parseInt(this.dataBahan[1][i][1]) + Integer.parseInt(this.bahanTopFill()[i][1]));
+//        }System.out.println("cek");
+    }
 }

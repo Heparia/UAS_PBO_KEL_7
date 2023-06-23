@@ -15,27 +15,38 @@ public class RotiTawar extends MacamRoti{
 
     @Override
     int hitungJumlahPcs() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.beratKomposisi/this.beratSatuPcs;
+
     }
 
     @Override
     int sisaBahan() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.beratKomposisi%this.beratSatuPcs;
     }
 
     @Override
     void displayCheck() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        System.out.println(this.getJumlahModalAdonanPerPcs());
+    }
+
+    @Override
+    int[] getKomposisi() {
+        return this.komposisiRotiTawar;
     }
 
     @Override
     double[] getHargaPerKomposisi() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return super.setHargaPerKomposisiAdonan(this.komposisiRotiTawar);
     }
 
     @Override
     double getJumlahModalAdonanPerPcs() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        double[] data = this.getHargaPerKomposisi();
+        double hasil = 0;
+        for(int i = 0; i < data.length; i ++){
+            hasil = hasil + data[i];
+        }
+        return hasil/this.hitungJumlahPcs();
     }
 
 }

@@ -8,7 +8,7 @@ package bakerypakray;
  *
  * @author user
  */
-public class PerhitunganBahan {
+public class PerhitunganBahan{
     String nama = null;
     int varian = 0;
     int jumlah = 0;
@@ -185,27 +185,35 @@ public class PerhitunganBahan {
         return data;
     }
     
+    public String[][][] getData(){
+        return this.dataBahan;
+    }
+        
     public void setData() {
+        if (dataBahan != null) {
+            for (String[][] a : dataBahan) {
+                if (a == null) {
+                    break;
+                }
+                for (int i = 0; i < this.getDataBahan()[3].length; i++) {
+                    if (a[i][0] == null) {
+                            break;
+                        }
+                    else if (a[i][1] == null){
+                        continue;
+                    }
+                    else if (a[i][0] != null && a[i][0].equals(this.getDataBahan()[3][i][0])) {
+                        double dataSebelum = Double.parseDouble(a[i][1]);
+                        double dataSesudah = Double.parseDouble(this.getDataBahan()[3][i][1]);
+                        a[i][1] = Double.toString(dataSebelum + dataSesudah);
+                    }
+                }
+            }
+        }
+        
         this.dataBahan[0] = this.getDataBahan()[3];
         this.dataBahan[1] = this.bahanTopFill();
         
-//        if (dataBahan != null) {
-//            for (String[][] a : dataBahan) {
-//                if (a == null) {
-//                    break;
-//                }
-//                for (int i = 0; i < this.getDataBahan()[3].length; i++) {
-//                    if (a[i][0] == null) {
-//                            break;
-//                        }
-//                    else if (a[i][0] != null && a[i][0].equals(this.getDataBahan()[3][i][0])) {
-//                        double dataSebelum = Double.parseDouble(a[i][1]);
-//                        double dataSesudah = Double.parseDouble(this.getDataBahan()[3][i][1]);
-//                        a[i][1] = Double.toString(dataSebelum + dataSesudah);
-//                    }
-//                }
-//            }
-//        }
         
         if (dataBahan != null) {
             for (String[][] a : dataBahan) {
@@ -216,8 +224,6 @@ public class PerhitunganBahan {
                     if (b == null) {
                         continue;
                     }
-                    System.out.println("Nama: " + b[0]);
-                    System.out.println("Berat: " + b[1]);
                 }
             }
         }

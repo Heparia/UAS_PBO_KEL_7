@@ -4,6 +4,7 @@
  */
 package bakerypakray;
 import java.util.Scanner;
+import java.util.ArrayList;
 /**
  *
  * @author user
@@ -15,12 +16,15 @@ public class BakeryPakRay {
      */
     public static void main(String[] args) {
         String[][] orderan = {{"Roti Manis", "1", "50"}, {"Roti Manis", "2", "100"}, {"Roti Manis", "3", "70"}, {"Roti Tawar", "1","20"}, {"Roti Tawar", "2", "15"}, {"Pizza", "1", "10"}};
+        ArrayList<String[][][]> dataBahan = new ArrayList<>();
         
+        Start finish = new Start();
         for(String[] o : orderan){
             PerhitunganBahan start = new PerhitunganBahan(o);
             start.setData();
-            start.displayCheck();
-        }
+            dataBahan.add(start.getData());
+            finish.start(dataBahan);
+        }finish.finish();
         
         VarianSatuRotiManis b = new VarianSatuRotiManis();
         b.displayCheckVarian();

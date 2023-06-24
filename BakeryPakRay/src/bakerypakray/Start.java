@@ -18,9 +18,6 @@ public class Start {
     Adonan adonan = new Adonan();
     ToppingFilling topFill = new ToppingFilling();
     
-    String[][] dataAdonanTerUpdate = new String[8][2];
-    String[][] dataTopFillTerUpdate = new String[7][2];
-    
     ArrayList<String[][][]> data = new ArrayList<>();
     ArrayList<String[][]> finalData = new ArrayList<>();
 
@@ -108,12 +105,12 @@ public class Start {
             System.out.println("Berat: " +item[0][1] +" gram");
         }
         this.hitungBanyakKemasan();
-        System.out.println("============");
-        System.out.println("Banyak Kemasan");
-        System.out.println("============");
+        System.out.println("==============");
+        System.out.println("Jumlah Kemasan");
+        System.out.println("==============");
         for (String[][] item : finalData) {
             System.out.println("Nama: "+item[0][0]);
-            System.out.println("Berat: " +item[0][1]);
+            System.out.println("Jumlah: " +item[0][1]);
         }
     }
 }

@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @author user
  */
 public class BakeryPakRay {
- 
+
     /**
      * @param args the command line arguments
      */
@@ -21,11 +21,16 @@ public class BakeryPakRay {
         Start finish = new Start(); 
         for(String[] o : orderan){
             PerhitunganBahan start = new PerhitunganBahan(o);
+            String[][][] cek = start.getData();
             start.setData();
             dataBahan.add(start.getData());
             finish.start(dataBahan);
-        }finish.finish();
+        } 
+        finish.finish();
         
+        System.out.println("=================");
+        System.out.println("Harga Per Varian");
+        System.out.println("=================");
         VarianSatuRotiManis b = new VarianSatuRotiManis();
         b.displayCheckVarian();
         

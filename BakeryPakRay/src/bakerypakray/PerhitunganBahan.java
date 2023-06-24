@@ -4,6 +4,8 @@
  */
 package bakerypakray;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author user
@@ -29,14 +31,10 @@ public class PerhitunganBahan{
     }
     
     public void displayCheck(){
-//        for(int i = 0; i < this.dataBahan[0].length; i ++){
-//            System.out.println("Nama: "+this.dataBahan[0][i][0]);
-//            System.out.println("Berat: "+this.dataBahan[0][i][1]);
-//        }
-//        for(int i = 0; i < this.dataBahan[1].length; i ++){
-//            System.out.println("Nama: "+this.dataBahan[1][i][0]);
-//            System.out.println("Berat: "+this.dataBahan[1][i][1]);
-//        }
+        for(int i = 0; i < this.dataBahan[1].length; i ++){
+            System.out.println("Nama: "+this.dataBahan[1][i][0]);
+            System.out.println("Berat: "+this.dataBahan[1][i][1]);
+        }
     }
     
     public String[][][] getDataBahan(){
@@ -141,6 +139,12 @@ public class PerhitunganBahan{
                 }
             }
         }
+        for(String[] item : topFill){
+            if(item == null || item[1] ==null || item[0] == null){
+                continue;
+            }
+            item[1] = Integer.toString(Integer.parseInt(item[1]) * this.jumlah);
+        }
         return topFill;
     }
     
@@ -175,7 +179,7 @@ public class PerhitunganBahan{
     
     public String[][] getKomposisiPizza(){
         int[] komposisi = v1P.getKomposisi();
-        int banyakPcs = v1RT.hitungJumlahPcs();
+        int banyakPcs = v1P.hitungJumlahPcs();
         String[] nama = v1P.adonan.getAllNamaKemasan();
         String[][] data = new String[v1P.adonan.getJumlahBahan()][2];
         for (int i = 0; i < komposisi.length; i++) {
@@ -189,44 +193,9 @@ public class PerhitunganBahan{
         return this.dataBahan;
     }
         
-    public void setData() {
-        if (dataBahan != null) {
-            for (String[][] a : dataBahan) {
-                if (a == null) {
-                    break;
-                }
-                for (int i = 0; i < this.getDataBahan()[3].length; i++) {
-                    if (a[i][0] == null) {
-                            break;
-                        }
-                    else if (a[i][1] == null){
-                        continue;
-                    }
-                    else if (a[i][0] != null && a[i][0].equals(this.getDataBahan()[3][i][0])) {
-                        double dataSebelum = Double.parseDouble(a[i][1]);
-                        double dataSesudah = Double.parseDouble(this.getDataBahan()[3][i][1]);
-                        a[i][1] = Double.toString(dataSebelum + dataSesudah);
-                    }
-                }
-            }
-        }
-        
+    public void setData() {        
         this.dataBahan[0] = this.getDataBahan()[3];
         this.dataBahan[1] = this.bahanTopFill();
-        
-        
-        if (dataBahan != null) {
-            for (String[][] a : dataBahan) {
-                if (a == null) {
-                    continue;
-                } 
-                for (String[] b : a) {
-                    if (b == null) {
-                        continue;
-                    } 
-                }
-            }
-        }
     }
 
 }

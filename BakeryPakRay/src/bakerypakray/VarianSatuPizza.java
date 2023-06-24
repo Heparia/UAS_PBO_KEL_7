@@ -12,7 +12,7 @@ public class VarianSatuPizza extends Pizza implements Varian{
     private String[][] topping = {{"Keju", "30"}, {"Sosis", "50"}, {"Smoked Beef", "50"}, {"Bawang Bombay", "30"}};
     private String[][] filling = {{null, null}};
 
-    @Override
+    @Override 
     public double getHargaTopFill() {
         double[] hargaTopping = super.setHargaPerKomposisiTopFill(topping);
         double[] hargaFilling = super.setHargaPerKomposisiTopFill(filling);

@@ -13,7 +13,7 @@ public class Pizza extends MacamRoti{
     private int beratKomposisi = 1950;
     private int beratSatuPcs = 190;
 
-    @Override
+    @Override 
     int hitungJumlahPcs() {
         return this.beratKomposisi/this.beratSatuPcs;
     }

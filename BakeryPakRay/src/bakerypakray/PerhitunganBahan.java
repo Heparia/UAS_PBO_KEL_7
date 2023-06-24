@@ -223,7 +223,7 @@ public class PerhitunganBahan{
                 for (String[] b : a) {
                     if (b == null) {
                         continue;
-                    }
+                    } 
                 }
             }
         }

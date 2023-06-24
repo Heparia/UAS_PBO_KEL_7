@@ -8,7 +8,7 @@ package bakerypakray;
  *
  * @author user
  */
-public class Pizza extends MacamRoti{
+public class Pizza extends MacamRoti{ 
     private int[] komposisiPizza = {1000, 100, 100, 20, 200, 180, 50, 300};
     private int beratKomposisi = 1950;
     private int beratSatuPcs = 190;

@@ -13,7 +13,7 @@ import java.util.Map;
  * @author user
  */
 
-public class Start {
+public class Start { 
      
     String[][] dataAdonanTerUpdate = new String[8][2];
     String[][] dataTopFillTerUpdate = new String[7][2];

@@ -219,7 +219,7 @@ public class PerhitunganBahan{
             for (String[][] a : dataBahan) {
                 if (a == null) {
                     continue;
-                }
+                } 
                 for (String[] b : a) {
                     if (b == null) {
                         continue;

@@ -28,9 +28,9 @@ public class BakeryPakRay {
         } 
         finish.finish();
         
-        System.out.println("=================");
+        System.out.println("================");
         System.out.println("Harga Per Varian");
-        System.out.println("=================");
+        System.out.println("================");
         VarianSatuRotiManis b = new VarianSatuRotiManis();
         b.displayCheckVarian();
         

@@ -20,6 +20,7 @@ public class Start {
     
     ArrayList<String[][][]> data = new ArrayList<>();
     ArrayList<String[][]> finalData = new ArrayList<>();
+    ArrayList<String[]> dataDisplay = new ArrayList<>();
 
     public void start(ArrayList<String[][][]> input) {
         this.data = input;
@@ -64,7 +65,7 @@ public class Start {
     }
     
     public void hitungBanyakKemasan() {
-        ArrayList<String[][]> hasil = new ArrayList<>();
+        ArrayList<String[]> hasil = new ArrayList<>();
         String[] namaAdonan = adonan.getAllNamaKemasan();
         int[] beratAdonan = adonan.getAllBeratKemasan();
         String[] namaTopFill = topFill.getAllNamaKemasan();
@@ -77,7 +78,7 @@ public class Start {
                     if ((int) Double.parseDouble(item[0][1]) % beratAdonan[a] > 0) {
                         value = value + 1;
                     }
-                    hasil.add(new String[][] {{namaAdonan[a], Integer.toString(value)}});
+                    hasil.add(new String[] {namaAdonan[a], item[0][1], Integer.toString(value*beratAdonan[a]), Integer.toString(value)});
                 }
             }
             for (int a = 0; a < namaTopFill.length; a++) {
@@ -86,31 +87,27 @@ public class Start {
                     if ((int) Double.parseDouble(item[0][1]) % beratTopFill[a] > 0) {
                         value = value + 1;
                     }
-                    hasil.add(new String[][] {{namaTopFill[a], Integer.toString(value)}});
+                    hasil.add(new String[] {namaTopFill[a], item[0][1], Integer.toString(value*beratTopFill[a]), Integer.toString(value)});
                 }
             }
         }
-        this.finalData.clear();
-        this.finalData.addAll(hasil);
+        this.dataDisplay.clear();
+        this.dataDisplay.addAll(hasil);
     }
 
     
     public void finish() {
         mergeData(data);
-        System.out.println("============");
-        System.out.println("Berat Bahan");
-        System.out.println("============");
-        for (String[][] item : finalData) {
-            System.out.println("Nama: "+item[0][0]);
-            System.out.println("Berat: " +item[0][1] +" gram");
-        }
         this.hitungBanyakKemasan();
-        System.out.println("==============");
-        System.out.println("Jumlah Kemasan");
-        System.out.println("==============");
-        for (String[][] item : finalData) {
-            System.out.println("Nama: "+item[0][0]);
-            System.out.println("Jumlah: " +item[0][1]);
+        System.out.println("===========");
+        System.out.println("Bahan-Bahan");
+        System.out.println("===========");
+        for (String[] item : this.dataDisplay) {
+            System.out.println("Nama: "+item[0]);
+            System.out.println("Total berat dibutuhkan: " +item[1] + " gram");
+            System.out.println("Total berat kemasan: " +item[2] + " gram");
+            System.out.println("Jumlah kemasan: " +item[3]);
+            System.out.println("");
         }
     }
 }

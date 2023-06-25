@@ -34,6 +34,7 @@ public class BakeryPakRay {
         VarianSatuRotiManis b = new VarianSatuRotiManis();
         b.displayCheckVarian();
         
+        
         VarianDuaRotiManis c = new VarianDuaRotiManis();
         c.displayCheckVarian();
         

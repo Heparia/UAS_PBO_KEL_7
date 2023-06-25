@@ -7,11 +7,8 @@ package bakerypakray;
  *
  * @author user
  */
-public abstract class MacamRoti {
+public abstract class MacamRoti extends PerhitunganBahan{
     int profit = 40;
-    
-    Adonan adonan = new Adonan();
-    ToppingFilling topFill = new ToppingFilling();
     
     abstract int hitungJumlahPcs();
     abstract int sisaBahan();

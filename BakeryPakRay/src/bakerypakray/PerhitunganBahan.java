@@ -15,6 +15,7 @@ public class PerhitunganBahan{
     int varian = 0;
     int jumlah = 0;
     
+    
     VarianSatuRotiManis v1RM = new VarianSatuRotiManis();
     VarianDuaRotiManis v2RM = new VarianDuaRotiManis();
     VarianTigaRotiManis v3RM = new VarianTigaRotiManis();
